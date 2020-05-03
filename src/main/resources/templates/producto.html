@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeLeaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -7,6 +7,18 @@
 <body>
 
 	<h1>Lista de productos</h1>
+	<form th:action="@{/validar}" method="post" th:object="${product}">
+	<label>Producto</label>
+	<th>
+		<select th:field="*{id}">
+		<option th:each="p: ${producto}" th:value="${p.id}" th:text="${p.nombre}"></option>			
+		</select>
+	</th>
+	<br>
+	<input type="text" th:field="*{cantidad}"/>
+	<input type="submit" value="Comprar"/>
+	
+	</form>
 
 </body>
 </html>
